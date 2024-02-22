@@ -2,6 +2,7 @@ import cv2
 import pickle
 import mediapipe as mp
 import numpy as np
+import time
 
 model_dict = pickle.load(open('./model.p', 'rb'))
 model = model_dict['model']
@@ -14,10 +15,15 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
-labels_dict = {0: 'A', 1: 'B', 2: 'L'}
+labels_dict = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J', 10: 'K',
+               11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S', 19: 'T', 20: 'U',
+               21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z'}
 
 prev_alphabet = None
 output_file = open('detected_alphabets.txt', 'w')
+
+last_prediction_time = 0
+delay = 3  # Delay in seconds
 
 while True:
     data_aux = []
@@ -56,13 +62,15 @@ while True:
         x2 = int(max(x_) * W)
         y2 = int(max(y_) * H)
 
-        prediction = model.predict([np.asarray(data_aux)])
+        current_time = time.time()
+        if current_time - last_prediction_time >= delay:
+            prediction = model.predict([np.asarray(data_aux)])
+            predicted_character = labels_dict[int(prediction[0])]
 
-        predicted_character = labels_dict[int(prediction[0])]
-
-        if predicted_character != prev_alphabet:
             output_file.write(predicted_character)
             prev_alphabet = predicted_character
+
+            last_prediction_time = current_time
 
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4)
         cv2.putText(frame, predicted_character, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3, cv2.LINE_AA)

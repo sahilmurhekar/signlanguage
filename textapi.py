@@ -3,7 +3,7 @@ from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 
-PAT = '8fe469dde8b44a059342086cdf8fa12d'
+PAT = '4fb03d80038a47d096d2969ec6c5561a'
 USER_ID = 'openai'
 APP_ID = 'chat-completion'
 MODEL_ID = 'GPT-4'
