@@ -1,7 +1,14 @@
-Welcome to the sign language predictor!!
+# Face Recognition Model Project
 
-Guidelines:
-1. Run the collect_imgs.py file and perfoem the sign languages for various alphabets. This will store the data in various numbered folders. You can change the number of images and number of signs need to predict in this file.
-2. Run the create_dataset.py file which will gather and store the data collected in a proper format into a pickle file named data.pickle.
-3. Run tran_classifier.py to train the model.
-4. Run inference_classifier.py to see and predict the alphabets in runtime using CV.
+This project guides you through the process of collecting images, creating a dataset, training a face recognition model, and testing it. Follow the steps below to set up and run the project.
+
+## Prerequisites
+- Python 3.x installed on your system
+- Required dependencies (see `requirements.txt` for details)
+- A webcam or image files for collecting face data
+
+## Installation
+Clone this repository to your local machine:
+```bash
+git clone https://github.com/sahilmurhekar/signlanguage
+cd signlanguage
