@@ -1,6 +1,6 @@
-# Face Recognition Model Project
+# Hand-Sign Recognition Model Project
 
-This project guides you through the process of collecting images, creating a dataset, training a face recognition model, and testing it. Follow the steps below to set up and run the project.
+This project guides you through the process of collecting images, creating a dataset, training a hand-sign recognition model, and testing it. Follow the steps below to set up and run the project.
 
 ## Prerequisites
 - Python 3.x installed on your system
